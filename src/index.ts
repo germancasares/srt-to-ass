@@ -71,7 +71,7 @@ export const parseSRT = (srt: string) => {
 }
 
 /** Convert SRT data (text) to ASS */
-export const convertToASS = (text: string) => {
+export const srtToAss = (text: string) => {
 	const sub = parseSRT(text);
 	const dialogues = [];
 	const styles = ass.getStyles();
