@@ -1,34 +1,15 @@
-export const scriptInfo = {
+export const getScriptInfo = () => ({
 	section: 'Script Info',
 	body: [
-		{
-			type: 'comment',
-			value: 'Converted using srt2ass : https://github.com/AxelTerizaki/srt2ass'
-		},
-		{
-			key: 'Title',
-			value: ''
-		},
-		{
-			key: 'ScriptType',
-			value: 'v4.00+'
-		},
-		{
-			key: 'WrapStyle',
-			value: 0
-		},
-		{
-			key: 'ScaledBorderAndShadow',
-			value: 'yes'
-		},
-		{
-			key: 'Collisions',
-			value: 'Normal'
-		}
+		{ key: 'Title', value: '' },
+		{ key: 'ScriptType', value: 'v4.00+' },
+		{ key: 'WrapStyle', value: "0" },
+		{ key: 'ScaledBorderAndShadow', value: 'yes' },
+		{ key: 'Collisions', value: 'Normal' }
 	]
-};
+});
 
-export const styles = {
+export const getStyles = () => ({
 	section: 'V4+ Styles',
 	body: [
 		{
@@ -65,11 +46,11 @@ export const styles = {
 				'Name': 'Default',
 				'Fontname': 'Arial',
 				'Fontsize': '20',
-				'PrimaryColour': '&H00FFFFFF',
-				'SecondaryColour': '&H000088EF',
-				'OutlineColour': '&H00000000',
-				'BackColour': '&H00666666',
-				'Bold': '-1',
+				'PrimaryColour': '&H00FFFFFF&',
+				'SecondaryColour': '&H000000FF&',
+				'OutlineColour': '&H00000000&',
+				'BackColour': '&H00000000&',
+				'Bold': '0',
 				'Italic': '0',
 				'Underline': '0',
 				'StrikeOut': '0',
@@ -78,9 +59,9 @@ export const styles = {
 				'Spacing': '0',
 				'Angle': '0',
 				'BorderStyle': '1',
-				'Outline': '3',
-				'Shadow': '0',
-				'Alignment': '8',
+				'Outline': '2',
+				'Shadow': '2',
+				'Alignment': '2',
 				'MarginL': '10',
 				'MarginR': '10',
 				'MarginV': '10',
@@ -88,13 +69,13 @@ export const styles = {
 			}
 		}
 	]
-};
+});
 
-export const events = {
+export const getEvents: any = () => ({
 	section: 'Events',
 	body: [
 		{
-        	key: 'Format',
+			key: 'Format',
 			'value': [
 				'Layer',
 				'Start',
@@ -109,9 +90,9 @@ export const events = {
 			]
 		}
 	]
-};
+});
 
-export const dialogue = {
+export const getDialogue = () => ({
 	key: 'Dialogue',
 	value: {
 		Layer: '1',
@@ -125,10 +106,8 @@ export const dialogue = {
 		Effect: '',
 		Text: ''
 	}
-};
+});
 
-export const dialogueScript = '{\\fad(90,20)\\k90}';
-export const commentScript = '{\\k90}';
 export const scriptFX = 'template pre-line all keeptags';
-export const script = '!retime("line",$start < 0 and -$start or -0,200)!{!$start < 0 and "\\\\k" .. ($start/10) or "\\\\k0"!\\fad(!$start < 0 and $start or 300!,200)}';
+export const script = '';
 
