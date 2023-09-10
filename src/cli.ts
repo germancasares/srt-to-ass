@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as fs from 'fs/promises';
-import { convertToASS } from './index.js';
+import { srtToAss } from './index.js';
 
 const runCLI = async () => {
 	if (!process.argv[2]) {
@@ -12,7 +12,7 @@ const runCLI = async () => {
 	const txtFile = process.argv[2];
 	if (!await fs.stat(txtFile)) throw `File ${txtFile} does not exist`;
 	const txt = await fs.readFile(txtFile, 'utf8');
-	return convertToASS(txt);
+	return srtToAss(txt);
 }
 
 try {
