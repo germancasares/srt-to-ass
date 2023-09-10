@@ -2,10 +2,10 @@
 import * as fs from 'fs/promises';
 import { convertToASS } from './index.js';
 
-async function mainCLI() {
+const runCLI = async () => {
 	if (!process.argv[2]) {
-		throw `convert-srt-to-ass - Convert SRT to ASS file
-		Usage: convert-srt-to-ass myfile.srt
+		throw `srt-to-ass - Convert SRT to ASS file
+		Usage: srt-to-ass myfile.srt
 		Output goes to stdout
 		`;
 	}
@@ -15,6 +15,8 @@ async function mainCLI() {
 	return convertToASS(txt);
 }
 
-mainCLI()
-	.then(data => console.log(data))
-	.catch(err => console.log(err));
+try {
+	console.log(await runCLI())
+} catch (error) {
+	console.log(error)
+}

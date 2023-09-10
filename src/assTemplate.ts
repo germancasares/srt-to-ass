@@ -5,7 +5,9 @@ export const getScriptInfo = () => ({
 		{ key: 'ScriptType', value: 'v4.00+' },
 		{ key: 'WrapStyle', value: "0" },
 		{ key: 'ScaledBorderAndShadow', value: 'yes' },
-		{ key: 'Collisions', value: 'Normal' }
+		{ key: 'Collisions', value: 'Normal' },
+		{ key: 'PlayResX', value: '1920' },
+		{ key: 'PlayResY', value: '1080' },
 	]
 });
 
@@ -95,7 +97,7 @@ export const getEvents: any = () => ({
 export const getDialogue = () => ({
 	key: 'Dialogue',
 	value: {
-		Layer: '1',
+		Layer: '0',
 		Start: '00:00:00.00',
 		End: '00:00:00.00',
 		Style: 'Default',

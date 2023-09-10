@@ -2,37 +2,29 @@ import { AssToMs, convertSRTTags, msToAss } from './utils.js';
 import stringify from 'ass-stringify';
 import * as ass from './assTemplate.js';
 
-function generateASSLine(line: any, styles: any) {
+const generateDialogue = (line: any, styles: any) => {
 	let startMs = +line.startTime - 1000;
 	if (startMs < 0) startMs = 0;
-	const stopMs = +line.endTime + 100;
+	const stopMs = +line.endTime;
 	const dialogue = ass.getDialogue();
-	const comment = ass.getDialogue();
-	dialogue.value.Start = comment.value.Start = msToAss(startMs);
-	dialogue.value.End = comment.value.End = msToAss(stopMs);
+	dialogue.value.Start  = msToAss(startMs);
+	dialogue.value.End = msToAss(stopMs);
 	dialogue.value.Text = line.text;
 	dialogue.value.Effect = '';
 	dialogue.value.Style = styles.body[1].value.Name;
-	comment.value.Text = line.text;
-	comment.value.Effect = 'fx';
-	comment.key = 'Comment';
-	comment.value.Style = styles.body[1].value.Name;
-	return {
-		dialogue,
-		comment
-	};
+	return dialogue;
 }
 
-function sortStartTime(a: any, b: any) {
+const sortStartTime = (a: any, b: any) => {
 	if (a.value.Start < b.value.Start) return -1;
 	if (a.value.Start > b.value.Start) return 1;
 	return 0;
 }
 
 /** Parse SRT into something actually usable. Also replaces SRT tags by ASS tags */
-export function parseSRT(srt: string) {
+export const parseSRT = (srt: string) => {
 	// Windows' CRLFs are a pain, please kill them.
-	const rawArr = srt.replaceAll('\r', '').split('\\n');
+	const rawArr = srt.replaceAll('\r', '').split('\n');
 	const ass = [];
 	let subSegment = {
 		startTime: 0,
@@ -79,24 +71,19 @@ export function parseSRT(srt: string) {
 }
 
 /** Convert SRT data (text) to ASS */
-export function convertToASS(text: string): string {
+export const convertToASS = (text: string) => {
 	const sub = parseSRT(text);
 	const dialogues = [];
-	const comments = [];
 	const styles = ass.getStyles();
 	const script = ass.getDialogue();
 	script.value.Effect = ass.scriptFX;
 	script.value.Text = ass.script;
 	script.key = 'Comment';
-	comments.push(script);
 	for (const line of sub) {
-		const ASSLines = generateASSLine(line, styles);
-		comments.push(ASSLines.comment);
-		dialogues.push(ASSLines.dialogue);
+		dialogues.push(generateDialogue(line, styles));
 	}
-	comments.sort(sortStartTime);
 	dialogues.sort(sortStartTime);
 	const events = ass.getEvents();
-	events.body = [...events.body, ...comments, ...dialogues];
+	events.body = [...events.body, ...dialogues];
 	return stringify([ass.getScriptInfo(), styles, events]);
 }

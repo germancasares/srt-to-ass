@@ -1,4 +1,4 @@
-export function msToAss(ms: number) {
+export const msToAss = (ms: number) => {
 	const date = new Date(ms);
 	const hour = date.getUTCHours();
 	const hourStr = `${hour}`.padStart(2, '0');
@@ -11,7 +11,7 @@ export function msToAss(ms: number) {
 	return `${hourStr}:${minStr}:${secStr}.${milStr.substr(0, 2)}`;
 }
 
-export function AssToMs(time: string) {
+export const AssToMs = (time: string) => {
 	// Just making sure. SRT and ASS times are similar except for this
 	const text = time.replaceAll(',', '.');
 	const [hours, minutes, seconds] = text.split('.')[0].split(':');
@@ -19,7 +19,7 @@ export function AssToMs(time: string) {
 	return +miliseconds + (+seconds * 1000) + (+minutes * 60 * 1000) + (+hours * 60 * 60 * 1000);
 }
 
-export function convertSRTTags(text: string) {
+export const convertSRTTags = (text: string) => {
 	return text
 		.replace(/<b>|{b}/g, '{\\b1}')
 		.replace(/<\/b>|{\/b}/g, '{\\b0}')

@@ -1,12 +1,11 @@
 {
-  "name": "convert-srt-to-ass",
+  "name": "@almanime/srt-to-ass",
   "version": "1.0.3",
   "description": "Convert SRT subtitles to ASS",
   "main": "dist/index.js",
-  "types": "src/types.d.ts",
   "type": "module",
   "bin": {
-    "srt2ass": "dist/cli.js"
+    "srt-to-ass": "dist/cli.js"
   },
   "engines": {
     "node": "20.x"
@@ -16,7 +15,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "karaoke",
     "ass",
     "srt",
     "convert"
@@ -24,12 +22,12 @@
   "author": "Guillaume Lebigot <axel@teri-chan.net>, German Casares <german.casares@outlook.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/germancasares/srt2ass/issues",
+    "url": "https://github.com/germancasares/srt-to-ass/issues",
     "email": "german.casares@outlook.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/germancasares/srt2ass"
+    "url": "https://github.com/germancasares/srt-to-ass"
   },
   "dependencies": {
     "ass-stringify": "^0.1.3"
