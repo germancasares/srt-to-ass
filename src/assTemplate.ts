@@ -3,7 +3,7 @@ export const getScriptInfo = () => ({
 	body: [
 		{ key: 'Title', value: '' },
 		{ key: 'ScriptType', value: 'v4.00+' },
-		{ key: 'WrapStyle', value: "0" },
+		{ key: 'WrapStyle', value: "2" },
 		{ key: 'ScaledBorderAndShadow', value: 'yes' },
 		{ key: 'Collisions', value: 'Normal' },
 		{ key: 'PlayResX', value: '1920' },
