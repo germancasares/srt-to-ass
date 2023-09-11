@@ -49,7 +49,7 @@ export const parseSRT = (srt: string) => {
 		}
 		if (line === '') {
 			// Sub segment is done
-			subSegment.text = sub.join('\\n');
+			subSegment.text = sub.join('\\N');
 			ass.push(subSegment);
 			subSegment = {
 				startTime: 0,
@@ -64,7 +64,7 @@ export const parseSRT = (srt: string) => {
 		sub.push(convertSRTTags(line));
 	}
 	if (insideSubSegment) {
-		subSegment.text = sub.join('\\n');
+		subSegment.text = sub.join('\\N');
 		ass.push(subSegment);
 	}
 	return ass;
