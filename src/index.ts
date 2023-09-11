@@ -24,7 +24,7 @@ const sortStartTime = (a: any, b: any) => {
 /** Parse SRT into something actually usable. Also replaces SRT tags by ASS tags */
 export const parseSRT = (srt: string) => {
 	// Windows' CRLFs are a pain, please kill them.
-	const rawArr = srt.replaceAll('\r', '').split('\N');
+	const rawArr = srt.replaceAll('\r', '').split('\n');
 	const ass = [];
 	let subSegment = {
 		startTime: 0,
@@ -49,7 +49,7 @@ export const parseSRT = (srt: string) => {
 		}
 		if (line === '') {
 			// Sub segment is done
-			subSegment.text = sub.join('\\N');
+			subSegment.text = sub.join('\\n');
 			ass.push(subSegment);
 			subSegment = {
 				startTime: 0,
@@ -64,7 +64,7 @@ export const parseSRT = (srt: string) => {
 		sub.push(convertSRTTags(line));
 	}
 	if (insideSubSegment) {
-		subSegment.text = sub.join('\\N');
+		subSegment.text = sub.join('\\n');
 		ass.push(subSegment);
 	}
 	return ass;
