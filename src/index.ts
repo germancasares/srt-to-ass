@@ -3,7 +3,7 @@ import stringify from 'ass-stringify';
 import * as ass from './assTemplate.js';
 
 const generateDialogue = (line: any, styles: any) => {
-	let startMs = +line.startTime - 1000;
+	let startMs = +line.startTime;
 	if (startMs < 0) startMs = 0;
 	const stopMs = +line.endTime;
 	const dialogue = ass.getDialogue();
