@@ -11,6 +11,7 @@
 		"noEmit": false,
 		"strict": true,
 		"sourceMap": true,
+		"declaration": true,
 		"outDir": "dist/",
 		"pretty": true,
 		"removeComments": true,
